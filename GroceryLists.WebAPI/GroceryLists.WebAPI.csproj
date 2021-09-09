@@ -324,6 +324,16 @@
     <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.6.0.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GroceryLists.Models\GroceryLists.Models.csproj">
+      <Project>{80A82EFC-DB58-4006-887B-1029233694EC}</Project>
+      <Name>GroceryLists.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GroceryLists.Services\GroceryLists.Services.csproj">
+      <Project>{DF3F5C28-8100-4F32-969D-B22A3C04B68D}</Project>
+      <Name>GroceryLists.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
