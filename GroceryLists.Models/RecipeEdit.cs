@@ -15,5 +15,6 @@ namespace GroceryLists.Models
         [MaxLength(500, ErrorMessage = "Too many characters in the Name")]
         public string Name { get; set; }
         public List<Ingredient> Ingredients { get; set; }
+        public string Instructions { get; set; }
     }
 }
