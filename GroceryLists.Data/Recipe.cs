@@ -18,6 +18,9 @@ namespace GroceryLists.Data
             Access = true;
         }
 
+        public void AddIngredients(Ingredient ingredient)
+        {
 
+        }
     }
 }
