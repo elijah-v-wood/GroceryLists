@@ -14,10 +14,8 @@ namespace GroceryLists.Data
         [Required]
         public Guid OwnerId { get; set; }
         [Required]
-        [MaxLength(100, ErrorMessage = "Exceeded List Title character limit")]
         public string Title { get; set; }
         [Required]
-        [MaxLength(280, ErrorMessage = "Exceeded List Description character limit")]
         public string Description { get; set; }
         public List<Ingredient> Ingredients { get; set; } = new List<Ingredient>();
         public DateTimeOffset CreatedUtc { get; set; }
