@@ -113,6 +113,30 @@ namespace GroceryLists.Services
             }
         }
 
+        public IEnumerable<RecipeListItem> GetRecipesByIngredient(Ingredient ingredient)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Recipes
+                    .Where
+                    (r => 
+                    (r.Ingredients.
+                    Contains(ingredient) && r.OwnerId == _userId) || (r.Ingredients.
+                    Contains(ingredient) && r.Access))
+                    .Select
+                    (
+                        r => new RecipeListItem
+                        {
+                            RecipeId = r.RecipeId,
+                            Name = r.Name,
+                            CreatedUtc = r.CreatedUtc,
+                        }
+                    );
+                return entity.ToArray();
+            }
+
+        }
+
         public bool EditRecipe(RecipeEdit model)
         {
             using(var ctx =new ApplicationDbContext())

@@ -336,6 +336,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GroceryLists.Data\GroceryLists.Data.csproj">
+      <Project>{4C0D2BC4-3D1B-491F-A768-EB9A7A4E0FA1}</Project>
+      <Name>GroceryLists.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GroceryLists.Models\GroceryLists.Models.csproj">
       <Project>{80A82EFC-DB58-4006-887B-1029233694EC}</Project>
       <Name>GroceryLists.Models</Name>
