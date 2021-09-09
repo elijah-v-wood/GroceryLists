@@ -310,6 +310,20 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GroceryLists.Data\GroceryLists.Data.csproj">
+      <Project>{4C0D2BC4-3D1B-491F-A768-EB9A7A4E0FA1}</Project>
+      <Name>GroceryLists.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GroceryLists.Models\GroceryLists.Models.csproj">
+      <Project>{80A82EFC-DB58-4006-887B-1029233694EC}</Project>
+      <Name>GroceryLists.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GroceryLists.Services\GroceryLists.Services.csproj">
+      <Project>{DF3F5C28-8100-4F32-969D-B22A3C04B68D}</Project>
+      <Name>GroceryLists.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
