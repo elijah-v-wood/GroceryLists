@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GroceryLists.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,6 +11,6 @@ namespace GroceryLists.WebAPI.Controllers
     [Authorize]
     public class IngredientController : ApiController
     {
-        var userId = Guid.Parse(User.Identity.GetUserId())
+        private IngredientService CreateIngredientService()
     }
 }
