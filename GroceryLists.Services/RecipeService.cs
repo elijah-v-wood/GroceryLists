@@ -73,7 +73,7 @@ namespace GroceryLists.Services
                 return query.ToArray();
             }
         }
-        public IEnumerable<RecipeListItem> GetAllOtherRecipes()
+        public IEnumerable<RecipeListItem> GetAllPublic()
         {
             using (var ctx = new ApplicationDbContext())
             {
