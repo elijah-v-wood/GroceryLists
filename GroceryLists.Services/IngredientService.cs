@@ -61,6 +61,7 @@ namespace GroceryLists.Services
                     ctx
                     .Ingredients
                     .Single(e => e.IngredientId == id && e.OwnerId == _userId);
+                return
                 new IngredientDetail
                 {
                     IngredientId = entity.IngredientId,
@@ -70,6 +71,7 @@ namespace GroceryLists.Services
                 };
             }
         }
+        
 
         public bool UpdateIngredient(IngredientEdit model)
         {
