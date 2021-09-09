@@ -32,6 +32,24 @@ namespace GroceryLists.Services
             }
         }
 
-        
+        public IEnumerable<RecipeListItem> GetIngredients()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx
+                    .Recipes
+                    .Where(e => e.OwnerId == _userId)
+                    .Select
+                    (
+                        r => new IngredientListItem
+                        {
+                            IngredientId = e.IngredientId
+                            Name = e.Name,
+                            
+                        }
+                    );
+                return query.ToArray();
+            }
+        }
     }
 }
