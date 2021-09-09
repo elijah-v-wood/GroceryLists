@@ -1,4 +1,5 @@
-﻿using GroceryLists.Models;
+﻿using GroceryLists.Data;
+using GroceryLists.Models;
 using GroceryLists.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -50,6 +51,14 @@ namespace GroceryLists.WebAPI.Controllers
         {
             var recipeService = CreateRecipeService();
             var recipes = recipeService.GetAllPublic();
+
+            return Ok(recipes);
+        }
+        [HttpGet]
+        public IHttpActionResult GetByIngredient([FromBody]Ingredient ingredient)
+        {
+            var recipeService = CreateRecipeService();
+            var recipes = recipeService.GetRecipesByIngredient(ingredient);
 
             return Ok(recipes);
         }
