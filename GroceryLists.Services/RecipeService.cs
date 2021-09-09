@@ -31,6 +31,65 @@ namespace GroceryLists.Services
             using(var ctx = new ApplicationDbContext())
             {
                 ctx.Recipes.Add(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public IEnumerable<RecipeListItem> GetMyRecipes()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx
+                    .Recipes
+                    .Where(r => r.OwnerId == _userId)
+                    .Select
+                    (
+                        r => new RecipeListItem
+                        {
+                            RecipeId = r.RecipeId,
+                            Name = r.Name,
+                            CreatedUtc = r.CreatedUtc,
+                        }
+                    );
+                return query.ToArray();
+            }
+        }
+        public IEnumerable<RecipeListItem> GetAllRecipes()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx
+                    .Recipes
+                    .Where(r => r.OwnerId == _userId || r.Access)
+                    .Select
+                    (
+                        r => new RecipeListItem
+                        {
+                            RecipeId = r.RecipeId,
+                            Name = r.Name,
+                            CreatedUtc = r.CreatedUtc,
+                        }
+                    );
+                return query.ToArray();
+            }
+        }
+        public IEnumerable<RecipeListItem> GetAllOtherRecipes()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx
+                    .Recipes
+                    .Where(r => r.Access)
+                    .Select
+                    (
+                        r => new RecipeListItem
+                        {
+                            RecipeId = r.RecipeId,
+                            Name = r.Name,
+                            CreatedUtc = r.CreatedUtc,
+                        }
+                    );
+                return query.ToArray();
             }
         }
     }
