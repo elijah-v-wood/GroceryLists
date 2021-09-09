@@ -92,5 +92,6 @@ namespace GroceryLists.Services
                 return query.ToArray();
             }
         }
+
     }
 }
