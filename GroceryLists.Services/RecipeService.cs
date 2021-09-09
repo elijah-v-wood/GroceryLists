@@ -93,5 +93,52 @@ namespace GroceryLists.Services
             }
         }
 
+        public RecipeDetail GetRecipeById(int id)
+        {
+            using (var ctx=new ApplicationDbContext())
+            {
+                var entity = ctx.Recipes
+                    .Single(r => (r.RecipeId == id && r.OwnerId == _userId)||(r.RecipeId==id && r.Access));
+
+                return
+                    new RecipeDetail
+                    {
+                        RecipeId = entity.RecipeId,
+                        Name = entity.Name,
+                        Ingredients = entity.Ingredients,
+                        Instructions = entity.Instructions,
+                        CreatedUtc = entity.CreatedUtc,
+                        ModifiedUtc = entity.ModifiedUtc
+                    };
+            }
+        }
+
+        public bool EditRecipe(RecipeEdit model)
+        {
+            using(var ctx =new ApplicationDbContext())
+            {
+                var entity = ctx.Recipes
+                    .Single(r => r.RecipeId == model.RecipeId && r.OwnerId == _userId);
+
+                entity.Name = model.Name;
+                entity.Ingredients = model.Ingredients;
+                entity.Instructions = model.Instructions;
+                entity.ModifiedUtc = DateTimeOffset.Now;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool DeleteRecipe(int recipeId)
+        {
+            using (var ctx= new ApplicationDbContext())
+            {
+                var entity = ctx.Recipes
+                    .Single(r => r.RecipeId == recipeId && r.OwnerId == _userId);
+
+                ctx.Recipes.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
