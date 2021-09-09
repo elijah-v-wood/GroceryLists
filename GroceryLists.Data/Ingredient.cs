@@ -13,6 +13,8 @@ namespace GroceryLists.Data
         public int IngredientId { get; set; }
         [Required]
         public string Name { get; set; }
+        [Required]
+        public Guid OwnerId { get; set; }
 
         public int? Quantity { get; set; }
     }

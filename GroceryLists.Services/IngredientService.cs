@@ -31,5 +31,73 @@ namespace GroceryLists.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        public IEnumerable<IngredientListItem> GetIngredients()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Ingredients
+                    .Where(e => e.OwnerId == _userId)
+                    .Select
+                    (
+                        e => new IngredientListItem
+                        {
+                            IngredientId = e.IngredientId,
+                            Name = e.Name
+
+                        }
+                    );
+                return query.ToArray();
+            }
+        }
+
+        public IngredientDetail GetIngredientById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Ingredients
+                    .Single(e => e.IngredientId == id && e.OwnerId == _userId);
+                return
+                new IngredientDetail
+                {
+                    IngredientId = entity.IngredientId,
+                    Name = entity.Name,
+                    Quantity = entity.Quantity
+
+                };
+            }
+        }
+        
+
+        public bool UpdateIngredient(IngredientEdit model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Ingredients
+                    .Single(e => e.IngredientId == model.IngredientId && e.OwnerId == _userId);
+                entity.Name = model.Name;
+                entity.Quantity = model.Quantity;
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteIngredient(int ingredientId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Ingredients
+                    .Single(e => e.IngredientId == ingredientId && e.OwnerId == _userId);
+                ctx.Ingredients.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

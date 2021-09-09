@@ -9,6 +9,8 @@ namespace GroceryLists.Data
 {
     public class Recipe
     {
+        public Guid OwnerId;
+
         public int RecipeId { get; set; }
         public Guid OwnerId { get; set; }
 
