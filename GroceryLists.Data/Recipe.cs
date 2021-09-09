@@ -9,6 +9,8 @@ namespace GroceryLists.Data
 {
     public class Recipe
     {
+        public Guid OwnerId;
+
         public int RecipeId { get; set; }
 
         [MaxLength(500, ErrorMessage = "Too many characters in the Name")]
