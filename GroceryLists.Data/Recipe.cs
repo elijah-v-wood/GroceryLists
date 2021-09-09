@@ -18,9 +18,9 @@ namespace GroceryLists.Data
             Access = true;
         }
 
-        public void AddIngredients(Ingredient ingredient)
+        public void AddIngredient(Ingredient ingredient)
         {
-
+            Ingredients.Add(ingredient);
         }
     }
 }
