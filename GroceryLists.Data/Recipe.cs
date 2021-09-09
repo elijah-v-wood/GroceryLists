@@ -10,7 +10,7 @@ namespace GroceryLists.Data
     {
         public int RecipeId { get; set; }
         public string Name { get; set; }
-        public Ingredient[] Ingredients { get; set; }
+        public List<Ingredient> Ingredients { get; set; }
         private bool Access { get; set; } = false;
 
         public void PublicAccess()
