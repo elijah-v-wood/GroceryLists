@@ -60,6 +60,8 @@
     <Compile Include="RecipeCreate.cs" />
     <Compile Include="RecipeEdit.cs" />
     <Compile Include="RecipeListItem.cs" />
+    <Compile Include="ShoppingListCreate.cs" />
+    <Compile Include="ShoppingListDetail.cs" />
     <Compile Include="ShoppingListListItem.cs" />
   </ItemGroup>
   <ItemGroup>
