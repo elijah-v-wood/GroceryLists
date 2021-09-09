@@ -1,20 +1,21 @@
 ﻿using GroceryLists.Data;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GroceryLists.Models
 {
-    public class RecipeEdit
+    public class RecipeDetail
     {
         public int RecipeId { get; set; }
-
-        [MaxLength(500, ErrorMessage = "Too many characters in the Name")]
         public string Name { get; set; }
         public List<Ingredient> Ingredients { get; set; }
         public string Instructions { get; set; }
+        public bool Access { get; set; } = false;
+        public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
+
     }
 }

@@ -16,7 +16,9 @@ namespace GroceryLists.Models
         [Required]
         public List<Ingredient> Ingredients { get; set; }
         [Required]
-        private bool Access { get; set; } = false;
+        public string Instructions { get; set; }
+        [Required]
+        public bool Access { get; set; } = false;
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }
