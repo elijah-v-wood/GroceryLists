@@ -1,28 +1,23 @@
-﻿using System;
+﻿using GroceryLists.Data;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GroceryLists.Data
+namespace GroceryLists.Models
 {
-    public class Recipe
+    public class RecipeCreate
     {
-        public int RecipeId { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public List<Ingredient> Ingredients { get; set; }
+        [Required]
         private bool Access { get; set; } = false;
+        [Required]
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }
-
-        public void PublicAccess()
-        {
-            Access = true;
-        }
-
-        public void AddIngredient(Ingredient ingredient)
-        {
-            Ingredients.Add(ingredient);
-        }
     }
 }
